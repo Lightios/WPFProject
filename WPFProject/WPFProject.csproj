@@ -18,4 +18,9 @@
       </Resource>
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.1" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
 </Project>

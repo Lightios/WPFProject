@@ -18,6 +18,11 @@ namespace WPFProject.Controls
             // Implementacja metody Serialize
         }
 
+        public void Deserialize()
+        {
+            // Implementacja metody Deserialize
+        }
+        
         public void SetPosition(int x, int y)
         {
             // Implementacja metody SetPosition

@@ -7,9 +7,31 @@
         xmlns:controls="clr-namespace:WPFProject.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <controls:RoomNumberObject />
-        <controls:LogoObject />
-        <controls:RoomMembersObject />
-    </Grid>
+        <Grid>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <FlowDocumentScrollViewer Grid.Column="0">
+                        <FlowDocument>
+                                <Paragraph>
+                                        <controls:LogoObject x:Name="LogoObject" />
+                                        <controls:RoomNumberObject x:Name="RoomNumberObject" />
+                                </Paragraph>
+                                <Paragraph>
+                                        <controls:RoomMembersObject x:Name="RoomMembersObject" />
+                                </Paragraph>
+                        </FlowDocument>
+                </FlowDocumentScrollViewer>
+
+                <StackPanel Grid.Column="1">
+                        <Button Content="Numer Sali" Click="EditRoomNumber" />
+                        <Button Content="Nazwiska" Click="EditRoomMembers" />
+                        <Button Content="Logo ścieżka" />
+                        <Button Content="Zapisz" Click="Save" />
+                        <Button Content="Wczytaj" Click="Load" />
+                        <Button Content="Drukuj" Click="Print" />
+                </StackPanel>
+        </Grid>
 </Window>

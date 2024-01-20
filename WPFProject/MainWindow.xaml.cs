@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WPFProject.Controls;
+using WPFProject.Dialogs;
+using WPFProject.Models;
 
 namespace WPFProject
 {
@@ -22,19 +11,45 @@ namespace WPFProject
     
     public partial class MainWindow : Window
     {
-        private RoomNumberObject roomNumberObject;
-        private LogoObject logoObject;
+        private DoorTag doorTag = new DoorTag();
         
         
         public MainWindow()
         {
             InitializeComponent();
-            
-            roomNumberObject = new RoomNumberObject();
-            logoObject = new LogoObject();
-            
-            roomNumberObject.SetPosition(10, 20);
-            logoObject.SetSize(100, 200);
+            DataContext = doorTag;
+            doorTag.AddContentObject(LogoObject);
+            doorTag.AddContentObject(RoomMembersObject);
+            doorTag.AddContentObject(RoomNumberObject);
         }
+        
+        private void Save(object sender, RoutedEventArgs e)
+        {
+            doorTag.Serialize();
+        }
+        
+        private void Load(object sender, RoutedEventArgs e)
+        {
+            doorTag.Deserialize();
+        }
+        
+        private void Print(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        
+        private void EditRoomNumber(object sender, RoutedEventArgs e)
+        {
+            var dialog = new RoomNumberDialog(RoomNumberObject);
+            dialog.ShowDialog();
+        }
+        
+        private void EditRoomMembers(object sender, RoutedEventArgs e)
+        {
+            var dialog = new RoomMembersDialog(RoomMembersObject);
+            dialog.ShowDialog();
+        }
+        
+        
     }
 }
