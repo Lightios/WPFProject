@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using WPFProject.Interfaces;
+using WPFProject.Models;
 
 namespace WPFProject.Controls
 {
@@ -9,17 +10,31 @@ namespace WPFProject.Controls
         {
             InitializeComponent();
             RoomNumberText.Text = "Default Text"; // Set the default text
+
         }
 
         public void Serialize()
         {
-            // Implementacja metody Serialize
-        }
+			var textParametersStorage = new TextParametersStorage() {
+				Text = RoomNumberText.Text,
+				FontSize = RoomNumberText.FontSize,
+				FontFamily = RoomNumberText.FontFamily,
+				FontColor = RoomNumberText.Foreground
+			};
+
+			var json = Newtonsoft.Json.JsonConvert.SerializeObject(textParametersStorage);
+			System.IO.File.WriteAllText(@"RoomNumberObject.json", json);
+		}
         
         public void Deserialize()
         {
-            // Implementacja metody Deserialize
-        }
+			var json = System.IO.File.ReadAllText(@"RoomNumberObject.json");
+			var textParametersStorage = Newtonsoft.Json.JsonConvert.DeserializeObject<TextParametersStorage>(json);
+			RoomNumberText.Text = textParametersStorage.Text;
+			RoomNumberText.FontSize = textParametersStorage.FontSize;
+			RoomNumberText.FontFamily = textParametersStorage.FontFamily;
+			RoomNumberText.Foreground = textParametersStorage.FontColor;
+		}
 
         public void SetPosition(int x, int y)
         {

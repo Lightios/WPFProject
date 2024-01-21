@@ -6,32 +6,33 @@
         xmlns:local="clr-namespace:WPFProject"
         xmlns:controls="clr-namespace:WPFProject.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-        <Grid>
-                <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+        Title="Generator tabliczek" Height="450" Width="800"
+        Icon = "Resources/logo.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="629*"/>
+            <ColumnDefinition Width="171*"/>
+        </Grid.ColumnDefinitions>
 
-                <FlowDocumentScrollViewer Grid.Column="0">
-                        <FlowDocument>
-                                <Paragraph>
-                                        <controls:LogoObject x:Name="LogoObject" />
-                                        <controls:RoomNumberObject x:Name="RoomNumberObject" />
-                                </Paragraph>
-                                <Paragraph>
-                                        <controls:RoomMembersObject x:Name="RoomMembersObject" />
-                                </Paragraph>
-                        </FlowDocument>
-                </FlowDocumentScrollViewer>
+        <FlowDocumentScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Disabled" Cursor="Arrow">
+            <FlowDocument>
+                <Paragraph>
+                    <controls:LogoObject x:Name="LogoObject" />
+                    <controls:RoomNumberObject x:Name="RoomNumberObject" Loaded="RoomNumberObject_Loaded" FontSize="36" />
+                </Paragraph>
+                <Paragraph>
+                    <controls:RoomMembersObject x:Name="RoomMembersObject" FontSize="22" />
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
 
-                <StackPanel Grid.Column="1">
-                        <Button Content="Numer Sali" Click="EditRoomNumber" />
-                        <Button Content="Nazwiska" Click="EditRoomMembers" />
-                        <Button Content="Logo ścieżka" />
-                        <Button Content="Zapisz" Click="Save" />
-                        <Button Content="Wczytaj" Click="Load" />
-                        <Button Content="Drukuj" Click="Print" />
-                </StackPanel>
-        </Grid>
+        <StackPanel Grid.Column="1" Cursor="Hand" Background="#FF015BA7" MaxWidth="171" HorizontalAlignment="Right" MinWidth="171">
+            <Button Content="Numer Sali" Click="EditRoomNumber" FontSize="18" FontWeight="Bold" Margin="5,7,5,5"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="1,4,1,4"/>
+            <Button Content="Nazwiska" Click="EditRoomMembers" FontSize="18" FontWeight="Bold" Margin="5,5,5,5" Padding="1,4,1,4"/>
+            <Button Content="Logo ścieżka" FontSize="18" FontWeight="Bold" Margin="5,5,5,5" Padding="1,4,1,4"/>
+            <Button Content="Zapisz" Click="Save" FontSize="18" FontWeight="Bold" Margin="5,5,5,5" Padding="1,4,1,4" />
+            <Button Content="Wczytaj" Click="Load" FontSize="18" FontWeight="Bold" Margin="5,5,5,5" Padding="1,4,1,4"/>
+            <Button Content="Drukuj" Click="Print" FontSize="18" FontWeight="Bold" Margin="5,5,5,5" Padding="1,4,1,4"/>
+        </StackPanel>
+    </Grid>
 </Window>

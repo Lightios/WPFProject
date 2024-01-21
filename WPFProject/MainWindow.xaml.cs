@@ -49,7 +49,9 @@ namespace WPFProject
             var dialog = new RoomMembersDialog(RoomMembersObject);
             dialog.ShowDialog();
         }
-        
-        
-    }
+
+		private void RoomNumberObject_Loaded(object sender, RoutedEventArgs e) {
+
+		}
+	}
 }

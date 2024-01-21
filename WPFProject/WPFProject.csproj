@@ -8,12 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Resources\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="Resources\logo.png" />
       <Resource Include="Resources\logo.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\appLogo.png" />
+      <Resource Include="Resources\appLogo.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
     </ItemGroup>
