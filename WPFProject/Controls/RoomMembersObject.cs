@@ -4,7 +4,7 @@ using WPFProject.Models;
 
 namespace WPFProject.Controls
 {
-    public partial class RoomMembersObject : UserControl, IContentObject
+    public partial class RoomMembersObject : IContentObject
     {
         public RoomMembersObject()
         {
@@ -12,33 +12,49 @@ namespace WPFProject.Controls
             RoomMembersText.Text = "Jan Kowalski\nAdam Mickiewicz"; 
         }
 
-        public void Serialize()
+        public string Serialize()
         {
             var textParametersStorage = new TextParametersStorage()
             {
                 Text = RoomMembersText.Text,
                 FontSize = RoomMembersText.FontSize,
                 FontFamily = RoomMembersText.FontFamily,
-                FontColor = RoomMembersText.Foreground
+                FontColor = RoomMembersText.Foreground,
+                X = Canvas.GetLeft(this),
+                Y = Canvas.GetTop(this),
+                Width = Width,
+                Height = Height
             };
             
-            var json = Newtonsoft.Json.JsonConvert.SerializeObject(textParametersStorage);
-            System.IO.File.WriteAllText(@"RoomMembersObject.json", json);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(textParametersStorage);
         }
 
-        public void Deserialize()
+        public void Deserialize(string json)
         {
-            var json = System.IO.File.ReadAllText(@"RoomMembersObject.json");
             var textParametersStorage = Newtonsoft.Json.JsonConvert.DeserializeObject<TextParametersStorage>(json);
             RoomMembersText.Text = textParametersStorage.Text;
             RoomMembersText.FontSize = textParametersStorage.FontSize;
             RoomMembersText.FontFamily = textParametersStorage.FontFamily;
             RoomMembersText.Foreground = textParametersStorage.FontColor;
+            Canvas.SetLeft(this, textParametersStorage.X);
+            Canvas.SetTop(this, textParametersStorage.Y);
+            Width = textParametersStorage.Width;
+            Height = textParametersStorage.Height;
         }
         
         public void SetPosition(int x, int y)
         {
-            
+            Canvas.SetLeft(this, x);
+            Canvas.SetTop(this, y);
+        }
+        
+        public string[] GetXAndY()
+        {
+            return new[]
+            {
+                Canvas.GetLeft(this).ToString(),
+                Canvas.GetTop(this).ToString()
+            };
         }
 
         public void SetSize(int width, int height)

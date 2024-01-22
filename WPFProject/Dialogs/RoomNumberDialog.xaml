@@ -1,8 +1,8 @@
-﻿<Window x:Class="WPFProject.Dialogs.RoomMembersDialog"
+﻿<Window x:Class="WPFProject.Dialogs.RoomNumberDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Nazwiska - edycja" Height="300" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon ="/Resources/logo.png">
+        Title="Sala - edycja" Height="300" Width="400" WindowStartupLocation="CenterScreen" Icon="/Resources/logo.png" ResizeMode="NoResize">
         
         <FlowDocumentScrollViewer>
                 <FlowDocument>

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using WPFProject.Interfaces;
 using Newtonsoft.Json;
 using System.IO;
@@ -22,29 +23,27 @@ public class DoorTag
         _contentObjects.Add(contentObject);
     }
 
-    public void Serialize()
+    public void Serialize(string path)
     {
-        // var settings = new JsonSerializerSettings
-        // {
-        //     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-        // };
-        //
-        // var json = JsonConvert.SerializeObject(_contentObjects[0], settings);
-        // File.WriteAllText(@$"{Name}.json", json);
-        foreach (var contentObject in _contentObjects)
-        {
-            contentObject.Serialize();
-        }
+       List<string> jsonList = new List<string>();
+       foreach (var contentObject in _contentObjects)
+       {
+           jsonList.Add(contentObject.Serialize());
+       }
+       var json = JsonConvert.SerializeObject(jsonList);
+       File.WriteAllText(path, json);
     }
     
-    public void Deserialize()
+    public void Deserialize(string path)
     {
-        foreach (var contentObject in _contentObjects)
+        var json = File.ReadAllText(path);
+        var jsonList = JsonConvert.DeserializeObject<List<string>>(json);
+        
+        for (int i = 0; i < jsonList.Count; i++)
         {
-            contentObject.Deserialize();
+            var contentObject = _contentObjects[i];
+            contentObject.Deserialize(jsonList[i]);
         }
-        // var json = File.ReadAllText(@$"{Name}.json");
-        // _contentObjects[0] = JsonConvert.DeserializeObject<LogoObject>(json);
     }
     
 }

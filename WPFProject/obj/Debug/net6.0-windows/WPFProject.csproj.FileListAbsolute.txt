@@ -49,3 +49,5 @@ C:\Users\nukin\RiderProjects\WPFProject\WPFProject\obj\Debug\net6.0-windows\Dial
 C:\Users\nukin\RiderProjects\WPFProject\WPFProject\obj\Debug\net6.0-windows\Dialogs\RoomNumberDIalog.baml
 C:\Users\nukin\RiderProjects\WPFProject\WPFProject\obj\Debug\net6.0-windows\Dialogs\RoomMembersDialog.g.cs
 C:\Users\nukin\RiderProjects\WPFProject\WPFProject\obj\Debug\net6.0-windows\Dialogs\RoomNumberDIalog.g.cs
+C:\Users\nukin\RiderProjects\WPFProject\WPFProject\obj\Debug\net6.0-windows\Dialogs\LogoDialog.baml
+C:\Users\nukin\RiderProjects\WPFProject\WPFProject\obj\Debug\net6.0-windows\Dialogs\LogoDialog.g.cs

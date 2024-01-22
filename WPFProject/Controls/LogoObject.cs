@@ -2,10 +2,11 @@
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using WPFProject.Interfaces;
+using WPFProject.Models;
 
 namespace WPFProject.Controls
 {
-    public partial class LogoObject : UserControl, IContentObject
+    public partial class LogoObject : IContentObject
     {
         public LogoObject()
         {
@@ -13,24 +14,57 @@ namespace WPFProject.Controls
             LogoImage.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/logo.png"));
         }
 
-        public void Serialize()
+        public string Serialize()
         {
-            // Implementacja metody Serialize
+            var logoParametersStorage = new LogoParametersStorage()
+            {
+                X = Canvas.GetLeft(this),
+                Y = Canvas.GetTop(this),
+                Width = LogoImage.Width,
+                Height = LogoImage.Height,
+                Path = LogoImage.Source.ToString()
+            };
+            
+            return Newtonsoft.Json.JsonConvert.SerializeObject(logoParametersStorage);
         }
 
-        public void Deserialize()
+        public void Deserialize(string json)
         {
-            // Implementacja metody Deserialize
+            var logoParametersStorage = Newtonsoft.Json.JsonConvert.DeserializeObject<LogoParametersStorage>(json);
+            Canvas.SetLeft(this, logoParametersStorage.X);
+            Canvas.SetTop(this, logoParametersStorage.Y);
+            Width = logoParametersStorage.Width;
+            Height = logoParametersStorage.Height;
         }
         
         public void SetPosition(int x, int y)
         {
-            // Implementacja metody SetPosition
+            Canvas.SetLeft(this, x);
+            Canvas.SetTop(this, y);
+        }
+        
+        public string[] GetXAndY()
+        {
+            return new[]
+            {
+                Canvas.GetLeft(this).ToString(),
+                Canvas.GetTop(this).ToString()
+            };
         }
 
-        public void SetSize(int x, int y)
+        public void SetSize(int width, int height)
         {
-            // Implementacja metody SetSize
+            LogoImage.Width = width;
+            LogoImage.Height = height;
+
+            Width = width;
+            Height = height;
+        }
+
+        public void SetImage(string filename)
+        {
+            LogoImage.Source = new BitmapImage(new Uri(filename));
         }
     }
+
 }
