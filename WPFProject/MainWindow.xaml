@@ -15,10 +15,10 @@
         </Grid.ColumnDefinitions>
 
         <FlowDocumentScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Disabled" Cursor="Arrow">
-            <FlowDocument>
-                <Paragraph>
+            <FlowDocument x:Name="Document1" >
+                <Paragraph >
                     <controls:LogoObject x:Name="LogoObject" />
-                    <controls:RoomNumberObject x:Name="RoomNumberObject" Loaded="RoomNumberObject_Loaded" FontSize="36" />
+                    <controls:RoomNumberObject x:Name="RoomNumberObject" Loaded="RoomNumberObject_Loaded" FontSize="36"  />
                 </Paragraph>
                 <Paragraph>
                     <controls:RoomMembersObject x:Name="RoomMembersObject" FontSize="22" />

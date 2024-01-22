@@ -9,7 +9,7 @@ namespace WPFProject.Controls
         public RoomNumberObject()
         {
             InitializeComponent();
-            RoomNumberText.Text = "Default Text"; // Set the default text
+            RoomNumberText.Text = "0000"; // Set the default text
 
         }
 

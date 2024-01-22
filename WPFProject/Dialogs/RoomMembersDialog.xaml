@@ -2,24 +2,24 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="FontSizeDialog" Height="200" Width="400">
+        Title="Nazwiska - edycja" Height="200" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon ="/Resources/logo.png">
         
         <FlowDocumentScrollViewer Grid.Column="0">
                 <FlowDocument>
                         <Paragraph>
-                                <TextBlock>Rozmiar czcionki: </TextBlock>
+                                <TextBlock FontFamily="Segoe UI" FontSize="18">Rozmiar czcionki: </TextBlock>
                                 <!-- <TextBox x:Name="FontSizeTextBox" TextChanged="ValueChanged" /> -->
-                                <TextBox x:Name="FontSizeTextBox" />
+                                <TextBox x:Name="FontSizeTextBox" IsEnabled="False" FontFamily="Segoe UI" FontSize="16" />
                                 <Button x:Name="DecreaseButton" Content="-" Click="ChangeFontSize" Tag="Decrease" />
                                 <Button x:Name="IncreaseButton" Content="+" Click="ChangeFontSize" Tag="Increase" />
                         </Paragraph>
                         <Paragraph>
-                                <TextBlock>Krój czcionki: </TextBlock>
-                                <ComboBox x:Name="FontComboBox" SelectionChanged="FontComboBox_SelectionChanged" Loaded="FontComboBox_Loaded" />
+                                <TextBlock FontFamily="Segoe UI" FontSize="18">Krój czcionki: </TextBlock>
+                                <ComboBox x:Name="FontComboBox" SelectionChanged="FontComboBox_SelectionChanged" Loaded="FontComboBox_Loaded" FontFamily="Segoe UI" />
                         </Paragraph>
                         <Paragraph> <!-- Dodaj ten paragraf -->
-                                <TextBlock>Kolor czcionki: </TextBlock>
-                                <xctk:ColorPicker x:Name="FontColorPicker" SelectedColorChanged="FontColorPicker_SelectedColorChanged" />
+                                <TextBlock FontFamily="Segoe UI" FontSize="18">Kolor czcionki: </TextBlock>
+                                <xctk:ColorPicker x:Name="FontColorPicker" SelectedColorChanged="FontColorPicker_SelectedColorChanged" ShowRecentColors="True" SelectedColor="Black" Width="60" />
                         </Paragraph>
                 </FlowDocument>
         </FlowDocumentScrollViewer>
