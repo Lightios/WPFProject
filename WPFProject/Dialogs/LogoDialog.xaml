@@ -1,0 +1,26 @@
+﻿<Window x:Class="WPFProject.Dialogs.LogoDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sala - edycja" Height="300" Width="400" WindowStartupLocation="CenterScreen" Icon="/Resources/logo.png" ResizeMode="NoResize">
+        
+        <FlowDocumentScrollViewer>
+                <FlowDocument>
+                        <Paragraph>
+                                <Button Content="Wybierz obrazek" Click="ChooseImage"></Button>
+                        </Paragraph>
+                        <Paragraph>
+                                <TextBlock>Pozycja: </TextBlock>
+                                <TextBox x:Name="PositionX" FontFamily="Segoe UI" FontSize="16" TextChanged="PositionX_TextChanged" />                                
+                                <TextBox x:Name="PositionY" FontFamily="Segoe UI" FontSize="16" TextChanged="PositionY_TextChanged" /> 
+                                <Button Content="Ustaw" Click="SetPosition"></Button>
+                        </Paragraph>
+                        <Paragraph>
+                                <TextBlock>Rozmiar: </TextBlock>
+                                <TextBox x:Name="Width" FontFamily="Segoe UI" FontSize="16" TextChanged="Width_TextChanged" />                                
+                                <TextBox x:Name="Height" FontFamily="Segoe UI" FontSize="16" TextChanged="Height_TextChanged" /> 
+                                <Button Content="Ustaw" Click="SetSize"></Button>
+                        </Paragraph>
+                </FlowDocument>
+        </FlowDocumentScrollViewer>
+</Window>
